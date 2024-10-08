@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <div class="mainClass">
+        <div class="sidebar position-sticky pt-3" style="background-color: rgba(0, 110, 196, 0.2);">
+            <div>
+                <div class="d-flex align-items-center mb-3">
+                    <img src="assets/image/logo1.png" alt="">
+                    <span class="fs-4 fw-bold">Inventory</span>
+                </div>
+                <ul class="nav flex-column">
+                    <li class="nav-item"> <a class="nav-link active" href="#"><i class="fas fa-shopping-bag me-2"></i>Items</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="#"><i class="fas fa-database me-2"></i> Assets</a> </li>
+                    <li class="nav-item"> <a class="nav-link" href="#"><i class="fas fa-tools me-2"></i> Tools</a> </li>
+                </ul>
+            </div>
+            <div>
+                <ul class="nav flex-column">
+                    <li class="nav-item" id="out" onclick="logout()"><a class="nav-link active" href="#"><i class="fas fa-sign-out-alt me-2"></i>Keluar</li></a>
+                </ul>
+                <!-- <button class="btn btn-secondary me-2" type="button" id="out" onclick="logout()">Keluar</button> -->
+            </div>
+        </div>
+        <div>
+            <div class="topMain">
+                <div>
+                    <h4 style="margin-top: 1rem;">Inventory</h4>
+                    <p>Items detail Information</p>
+                </div>
+            </div>
+            <div class="dashboard" id="dashboard">
+                <div class="topDashboardUser" id="userHome" style="display: flex;">
+                    <div class="searchControl">
+                        <span class="input-group-text" style="margin-right: 3px;" onclick="searchTable()"><i class="fas fa-search"></i></span>
+                        <input type="text" class="form-control" placeholder="Search Item" style="width: 20vw;" id="searchItem">
+                    </div>
+                    <div>
+                        <button class="btn btn-primary me-4" style="height: 7vh;" type="button" data-bs-toggle="modal"
+                            data-bs-target="#exampleModalKembalikan"><i class="fas fa-plus me-1" id="kembalikanId"></i> Return
+                            Item
+                        </button>
+                        <button class="btn btn-primary me-4" style="height: 7vh;" type="button" data-bs-toggle="modal"
+                            data-bs-target="#exampleModalPinjam"><i class="fas fa-plus me-1" id="pinjamId"></i> Borrow
+                            Item
+                        </button>
+                    </div>
+                </div>
+                <div class="itemCard">
+                    <table class="table" style="border-collapse: collapse; width: 100%; border: 1px solid #ddd;">
+                        <thead>
+                            <tr style="height:3rem; position: sticky; top: 0; background-color: white; z-index: 1;">
+                                <th style="width: 13%;">Nama Item</th>
+                                <th style="width: 13%;">Foto</th>
+                                <th style="width: 13%;">Status</th>
+                                <th style="width: 13%;">Jumlah Item</th>
+                            </tr>
+                        </thead>
+                        <tbody id="isiTable">
+                            <tr style="height: 3.5rem;">
+                                <td>Tiang Bendera</td>
+                                <td><img src="assets/image/TiangBendera.jpg" alt="Gas Kitting" class="rounded" width="40px"></td>
+                                <td>Tersedia</td>
+                                <td>2 pcs</td>
+                            </tr>
+                            <tr style="height: 3.5rem;">
+                                <td>Speaker</td>
+                                <td><img src="assets/image/Speaker.jpg" alt="Gas Kitting" class="rounded" width="40px"></td>
+                                <td>Tersedia</td>
+                                <td>2 pcs</td>
+                            </tr>
+                            <tr style="height: 3.5rem;">
+                                <td>Mic</td>
+                                <td><img src="assets/image/Mic.jpg" alt="Gas Kitting" class="rounded" width="40px"></td>
+                                <td>Tersedia</td>
+                                <td>2 pcs</td>
+                            </tr>
+                            <tr style="height: 3.5rem;">
+                                <td>Kamera</td>
+                                <td><img src="assets/image/kamera.jpg" alt="Gas Kitting" class="rounded" width="40px"></td>
+                                <td>Tersedia</td>
+                                <td>2 pcs</td>
+                            </tr>
+                            <tr style="height: 3.5rem;">
+                                <td>Walkie Talkie</td>
+                                <td><img src="assets/image/WalkieTalkie.jpg" alt="Gas Kitting" class="rounded" width="40px"></td>
+                                <td>Tersedia</td>
+                                <td>2 pcs</td>
+                            </tr>
+                            <tr style="height: 3.5rem;">
+                                <td>Tripod</td>
+                                <td><img src="assets/image/tripod.jpg" alt="Gas Kitting" class="rounded" width="40px"></td>
+                                <td>Tersedia</td>
+                                <td>2 pcs</td>
+                            </tr>
+                            <tr style="height: 3.5rem;">
+                                <td>Stabilizer</td>
+                                <td><img src="assets/image/Stabilizer.jpg" alt="Gas Kitting" class="rounded" width="40px"></td>
+                                <td>Tersedia</td>
+                                <td>2 pcs</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModalPinjam" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add Item</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table" style="border-collapse: collapse; width: 100%; border: 1px solid #ddd;">
+                        <tr>
+                            <td><label for="nameItem">Nama Item </label></td>
+                            <td>: <input type="text" placeholder="Nama Item" id="namaItem"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="jumlahItem">Jumlah Item</label></td>
+                            <td>: <input type="number" placeholder="Jumlah Item" min="1" id="jumlahItem"></td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="addItem" onclick="pinjamItem()">Pinjam</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModalKembalikan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Return Item</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table" style="border-collapse: collapse; width: 100%; border: 1px solid #ddd;">
+                        <tr>
+                            <td><label for="nameItem">Nama Item </label></td>
+                            <td>: <input type="text" placeholder="Nama Item" id="namaItemReturn"></td>
+                        </tr>
+                        <tr>
+                            <td><label for="jumlahItem">Jumlah Item</label></td>
+                            <td>: <input type="number" placeholder="Jumlah Item" min="1" id="jumlahItemReturn"></td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="addItem" onclick="returnItem()">Kembalikan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+</body>
+
+</html>

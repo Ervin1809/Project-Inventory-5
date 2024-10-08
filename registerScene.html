@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
+        rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Register</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styleLogin.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="image-section">
+            <img src="assets/image/logo1.png" alt="Inventory Logo" style="width: 100%;">
+        </div>
+        <div class="register-section">
+            <div class="logo">
+                <img src="assets/image/logo.png" alt="Inventory Logo">
+            </div>
+            <h4 class="text-left">Register</h4>
+            <p class="text-left">Create your account here</p>
+
+            <!-- FORM INPUT -->
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Create a password">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Register</button>
+            </form>
+
+            <p class="text-left">Already have an account? <a href="loginScene.html">Login here</a></p>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Fungsi untuk register form
+        document.getElementById('registerForm').addEventListener('submit', function (e) {
+            e.preventDefault(); // Mencegah reload halaman
+
+            // Mengambil nilai dari form
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            const users = JSON.parse(localStorage.getItem('users')) || []
+
+            if (users.some(user => user.email === email)) {
+                alert('User with this email already exists');
+                return;
+            }
+
+            // Validasi email
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@[gmail||yahoo||icloud]+\.[com]{2,}$/;
+            if (!emailRegex.test(email)) {
+                alert("Invalid email address");
+                return;
+            }
+
+            // Validasi password
+            const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+            if (!passwordRegex.test(password)) {
+                alert("Password must be at least 8 characters, contain at least one uppercase letter, one lowercase letter, and one digit");
+                return;
+            }
+            // user[email] = password;
+            users.push({ name, email, password });
+            alert("Registration successful!");
+
+            localStorage.setItem('users', JSON.stringify(users));
+
+            // kembali ke halaman login 
+            window.location.href = "loginScene.html";
+        });
+    </script>
+
+</body>
+
+</html>

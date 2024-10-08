@@ -1,0 +1,150 @@
+*,
+html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+/* LOGIN FORM */
+
+
+
+/* HOMEPAGE */
+.mainClass {
+    display: flex;
+    flex-direction: row;
+    margin: 1rem;
+}
+
+.mainClass img{
+    width: 40px;
+}
+
+.topMain {
+    width: 82vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.topMain input {
+    background-color: aliceblue;
+    margin-right: 4rem;
+    width: 20vw;
+}
+
+/* SIDEBAR */
+.sidebar {
+    height: 600px;
+    border-radius: 5px;
+    padding: 1rem;
+    margin-right: 1rem;
+}
+
+.nav-item a{
+    font-size: 14px ;
+    color: black;
+}
+
+#out{
+    margin-top: 365px;
+}
+
+/* DASHBOARD */
+.dashboard {
+    border: 1px solid rgb(202, 202, 202);
+    border-radius: 5px;
+    height: 500px;
+    display: "";
+}
+
+.dashboardBorrowing {
+    border: 1px solid rgb(202, 202, 202);
+    border-radius: 5px;
+    height: 500px;
+    display: none;
+}
+
+.topDashboardAdmin{
+    margin : 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.topDashboardUser{
+    margin : 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+.searchControl {
+    display: flex;
+    flex-direction: row;
+}
+
+/* DASHBOARD CARD */
+.itemCard{
+    overflow-y: scroll;
+    overflow: auto;
+    margin: 1rem; 
+    overflow-x: auto;
+    max-height: 420px;
+}
+
+.itemCardBorrow{
+    overflow-y: scroll;
+    overflow: auto;
+    margin: 1rem; 
+    overflow-x: auto;
+    max-height: 460px;
+}
+
+.table {
+    overflow-y: scroll;
+    overflow: auto;
+
+}
+
+/* MODAL */
+.modal-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-body td{
+    width: 40px;
+    /* background-color: aqua; */
+}
+
+
+.modal-body td label{
+    /* background-color: aqua; */
+    margin-top: 0.8rem;
+    margin-bottom: 0.3rem;
+
+}
+
+
+.modal-body td input{
+    height: 2.3rem;
+    width: 25vw;
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
+    /* background-color: rgb(125, 125, 125); */
+}
+
+.sidebar-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px; /* tambahkan jarak 20px dari bagian bawah sidebar */
+}
